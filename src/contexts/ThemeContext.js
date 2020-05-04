@@ -10,15 +10,21 @@ class ThemeContextProvider extends Component {
         light: { syntax: '#555', ui: '#ddd', bg: '#eee' },
         dark: { syntax: '#ddd', ui: '#333', bg: '#555' },
     }
-    render() {
-        return (
-            <ThemeContext.Provider value={{...this.state}}>
+    
+   
+toggleTheme = () => {
+    this.setState({ isLightTheme: !this.state.isLightTheme })
+}
 
-                {this.props.children}
+render() {
+    return (
+        <ThemeContext.Provider value={{ ...this.state , toggleTheme:this.toggleTheme}}>
 
-            </ThemeContext.Provider>
-        );
-    }
+            {this.props.children}
+
+        </ThemeContext.Provider>
+    );
+}
 }
 
 export default ThemeContextProvider;
